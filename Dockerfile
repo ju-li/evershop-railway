@@ -1,6 +1,6 @@
 FROM evershop/evershop:latest
 
-npm install -g npm@10.8.2
+RUN npm install -g npm@10.8.2
 
 ARG ADMIN_USERNAME
 ARG ADMIN_EMAIL
