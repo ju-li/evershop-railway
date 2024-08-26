@@ -1,6 +1,14 @@
 FROM evershop/evershop:latest
 
-RUN npm run user:create -- --email "fakemail@yopmail.com" --password "fakepass" --name "fakename"
+ENV ADMIN_USERNAME=$ADMIN_USERNAME
+ENV ADMIN_EMAIL=$ADMIN_EMAIL
+ENV ADMIN_PASSWORD=$ADMIN_PASSWORD
+
+RUN echo $ADMIN_USERNAME
+RUN echo $ADMIN_EMAIL
+RUN echo $ADMIN_PASSWORD
+
+RUN npm run user:create -- --email "$ADMIN_EMAIL" --password "$ADMIN_PASSWORD" --name "$ADMIN_USERNAME"
 
 EXPOSE 80
 CMD ["npm", "run", "start"]
